@@ -31,8 +31,8 @@ class Predio {
         return rutinas.map({rutina => rutina.caloriasQuemadasEn(persona.tiempoEntreno()) })
     }
 
-    method predioConRutinaDe500CaloriasPara(persona){
-        rutinas.any({rutina => (rutina.caloriasQuemadasEn(persona.tiempoEntreno())==500)})
+    method conRutinaDe500CaloriasPara(persona){
+        return rutinas.any({rutina => (rutina.caloriasQuemadasEn(persona.tiempoEntreno())==500)})
     }
 
 }

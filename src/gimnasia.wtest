@@ -114,4 +114,8 @@ describe "Ejercicio" {
 	test "predios tranquis para bob"{
 		assert.equals(#{},clubBarrial.prediosTranquisPara(bob))
 	}
+
+	test "predios tranquis para calamardo"{
+		assert.equals(#{},clubBarrial.prediosTranquisPara(calamardo))
+	}
 }
