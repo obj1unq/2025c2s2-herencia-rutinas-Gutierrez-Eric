@@ -13,15 +13,14 @@ class Club {
         return predios.filter({predio => predio.conRutinaDe500CaloriasPara(persona)})   
     }
 
-    method rutinasMasExigentePara(persona){
-        
+    method rutinasMasExigenteEnCadaPredioPara(persona){
+        return predios.map({predio => predio.rutinaMasExigentePara(persona)})
     }
 
 }
 
 class Predio {
     const property rutinas = #{}
-
 
     method caloriasAlRealizarTodasLasActividades (persona){
         return self.caloriasDeActividadesPara(persona).sum()
@@ -32,7 +31,11 @@ class Predio {
     }
 
     method conRutinaDe500CaloriasPara(persona){
-        return rutinas.any({rutina => (rutina.caloriasQuemadasEn(persona.tiempoEntreno())==500)})
+        return rutinas.any({rutina => (rutina.caloriasQuemadasEn(persona.tiempoEntreno()) < 500)})
+    }
+
+    method rutinaMasExigentePara(persona){
+        return rutinas.max({rutina => rutina.caloriasQuemadasEn(persona.tiempoEntreno())})
     }
 
 }

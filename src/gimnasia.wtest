@@ -105,17 +105,18 @@ describe "Ejercicio" {
 		assert.equals(22110,nautico.caloriasAlRealizarTodasLasActividades(bob))
 	}
 
-	test "calorias de calamardo al realizar actividades en predios"{
+	test "3.1 el mejor predio"{
 		assert.equals(recreo,clubBarrial.mejorPredioPara(calamardo))
 		assert.equals(1260,recreo.caloriasAlRealizarTodasLasActividades(calamardo))
 		assert.equals(1030,nautico.caloriasAlRealizarTodasLasActividades(calamardo))
 	}
-
-	test "predios tranquis para bob"{
+	test "3.2 predios tranquis"{
 		assert.equals(#{},clubBarrial.prediosTranquisPara(bob))
+		assert.equals(#{recreo},clubBarrial.prediosTranquisPara(calamardo))
 	}
 
-	test "predios tranquis para calamardo"{
-		assert.equals(#{},clubBarrial.prediosTranquisPara(calamardo))
+	test "3.3 rutinas más exigentes"{
+		assert.equals([maratonBA,remarEnCaminoRemeros],clubBarrial.rutinasMasExigenteEnCadaPredioPara(bob))
+		assert.equals([maratonBA,remarEnElDelta],clubBarrial.rutinasMasExigenteEnCadaPredioPara(calamardo))
 	}
 }
