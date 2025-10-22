@@ -1,5 +1,6 @@
 import rutinas.*
 import personas.*
+import clubs.*
 
 describe "Ejercicio" {
 
@@ -16,6 +17,10 @@ describe "Ejercicio" {
 	const calamardo = new PersonaSedentaria(peso = 60,tiempoEntreno = 5)
  	
 	const bob =  new PersonaAtleta(peso = 40)
+
+	const recreo = new Predio(rutinas = #{correrEnLaPlaya,maratonBA})
+	const nautico = new Predio (rutinas = #{remarEnElDelta,remarEnCaminoRemeros})
+	const clubBarrial = new Club( predios = #{recreo,nautico})
 
 
 	test "correrEnLaPlaya : una actividad de running con intensisdad 1.2"{
@@ -92,9 +97,21 @@ describe "Ejercicio" {
 	}
 	 
 
-//Punto 3: clubes
-	//const recreo = //un predio con correrEnLaPlaya y maratonBA
-	//const nautico = //un predio con remarEnElDelta y remarEnCaminoRemeros
-	//const clubBarrial = //un club con recreo y nautico
+	//Punto 3: clubes
+	
+	test "calorias de bob al realizar actividades en predio"{
+		assert.equals(recreo,clubBarrial.mejorPredioPara(bob))
+		assert.equals(35700,recreo.caloriasAlRealizarTodasLasActividades(bob))
+		assert.equals(22110,nautico.caloriasAlRealizarTodasLasActividades(bob))
+	}
 
+	test "calorias de calamardo al realizar actividades en predios"{
+		assert.equals(recreo,clubBarrial.mejorPredioPara(calamardo))
+		assert.equals(1260,recreo.caloriasAlRealizarTodasLasActividades(calamardo))
+		assert.equals(1030,nautico.caloriasAlRealizarTodasLasActividades(calamardo))
+	}
+
+	test "predios tranquis para bob"{
+		assert.equals(#{},clubBarrial.prediosTranquisPara(bob))
+	}
 }
